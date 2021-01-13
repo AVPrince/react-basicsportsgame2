@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Scoreboard</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js" ></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" ></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+    <script type="text/babel">
+        class Team extends React.Component {
+            constructor(props){
+                super(props);
+                this.state = {
+                    shots: 0,
+                    score: 0
+                }
+                this.shotSound = new Audio('./assets/BOUNCE+1.mp3')
+                this.scoreSound=new Audio('./assets/Swish.mp3')
+            }
+            shotHandler=()=>{
+                let score = this.state.score
+                this.shotSound.play()
+                if(Math.random()> 0.5){
+                    score +=1
+                    setTimeout(()=>{
+                        this.scoreSound.play()
+                    }, 150)
+                }
+                this.setState((state, props) =>({
+                    shots: state.shots+1,
+                    score
+                }))
+            }
+            render(){
+                let shotPercentageDiv
+                if (this.state.shots) {
+                    let shotPercentage = Math.round((this.state.score/this.state.shots)*100)
+                    shotPercentageDiv=(
+                        <div>
+                            <strong>Shooting %: {shotPercentage}</strong>    
+                        </div>
+                    )
+                }
+                return (
+                    <div className="Team">
+                        <h2>{this.props.name}</h2>
+                        <div className="identity">
+                            <img src={this.props.logo} alt={this.props.name} />
+                        </div>
+                        <div>
+                            <strong>Shots:</strong> {this.state.shots}
+                        </div>
+                        <div>
+                            <strong>Score:</strong> {this.state.score}
+                        </div>
+                        {shotPercentageDiv}
+                        <button onClick={this.shotHandler}>Shoot!</button>
+                    </div>
+                )
+            }
+        }
+        function Game(props){
+            return (
+                <div className="App">
+                    <h1>Welcome to the NBA from {props.venue}</h1>
+                    <div className="stats">
+                        <Team name={props.visitingTeam.name} logo={props.visitingTeam.logoSrc} />
+                        <div className="versus">
+                            <h1>VS</h1>
+                        </div>
+                        <Team name={props.homeTeam.name} logo={props.homeTeam.logoSrc} />
+                    </div>
+                </div>
+            )
+        }
+        function App(props) {
+            let timberwolves = {
+                name: "Minnesota Timberworlves",
+                logoSrc: "https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/min.png"
+            }
+            let warriors = {
+                name:"Golden State Warriors",
+                logoSrc: "https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/gsw.png"
+            }
+            let lakers = {
+                name: "Los Angeles Lakers",
+                logoSrc: "https://www.nba.com/resources/static/team/v2/lakers/images/gameday/team_logos_500x500/lal.png"
+            }
+            let nets = {
+                name: "Brooklyn Nets",
+                logoSrc:"https://a.espncdn.com/i/teamlogos/nba/500/bkn.png"
+            }
+            let celtics = {
+                name: "Boston Celtics",
+                logoSrc:"https://a.espncdn.com/i/teamlogos/nba/500/bos.png"
+            }
+            let grizzlies = {
+                name: "Memphis Grizzlies",
+                logoSrc:"https://www.dallasmavsnews.com/wp-content/uploads/2019/07/grizzlies.png"
+            }
+            let jazz = {
+                name:"Utah Jazz",
+                logoSrc:"https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/uta.png"
+            }
+            let hornets = {
+                name:"Charlotte Hornets",
+                logoSrc:"https://a.espncdn.com/i/teamlogos/nba/500/bkn.png"
+            }
+            let sixers = {
+                name:"Philadelphia 76ers",
+                logoSrc:"https://a.espncdn.com/i/teamlogos/nba/500/phi.png"
+            }
+            let mavericks={
+                name:"Dallas Mavericks",
+                logoSrc:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCBSetI5kUZ4CXBi_tlsPEBSjMADA7-IKPfQ&usqp=CAU"
+            }
+            let bucks = {
+                name:"Milwaukee Bucks",
+                logoSrc: "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nba/500/mil.png"
+            }
+            let thunder = {
+                name:"Oklahoma Thunder",
+                logoSrc:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fnba%2F500%2Fokc.png"
+            }
+            let raptors={
+                name:"Toronto Raptors",
+                logoSrc:"https://assets.stickpng.com/images/58419bf3a6515b1e0ad75a59.png"
+            }
+            let cavs = {
+                name: "Cleveland Cavaliers",
+                logoSrc: "https://p7.hiclipart.com/preview/636/267/712/cleveland-cavaliers-the-nba-finals-boston-celtics-miami-heat-nba-basketball.jpg"
+            }
+            let bulls={
+                name:"Chicago Bulls",
+                logoSrc:"https://mpng.subpng.com/20190806/zlw/kisspng-chicago-bulls-logo-nba-sports-trrtlz-share-your-adventure-5d48ffb687bff7.327412171565065142556.jpg"
+            }
+            let magic={
+                name:"Orlando Magic",
+                logoSrc:"https://mpng.subpng.com/20181122/ehc/kisspng-orlando-magic-nba-miami-heat-philadelphia-76ers-gorras-orlando-magic-hatstore-es-5bf752168af357.5632237715429350625692.jpg"
+            }
+            let rockets={
+                name:"Houston Rockets",
+                logoSrc:"https://sportsfly.cbsistatic.com/fly-88/bundles/sportsmediacss/images/team-logos/nba/HOU.svg"
+            }
+            let heat={
+                name:"Miami Heat",
+                logoSrc:"https://i.pinimg.com/originals/f7/eb/1a/f7eb1aad84c6ad94a9129e39c4af7dd4.png"
+            }
+            let knicks={
+                name:"New York Knicks",
+                logoSrc:"https://a2.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fnba%2F500%2Fny.png"
+            }
+            let spurs={
+                name:"San Antonio Spurs",
+                logoSrc:"https://i.pinimg.com/originals/2c/3e/89/2c3e8914deb2a37da8ef9d2eb639b88f.png"
+            }
+            let clippers={
+                name:"Los Angeles Clippers",
+                logoSrc:"https://a.espncdn.com/i/teamlogos/nba/500/lac.png"
+            }
+            let hawks={
+                name:"Atlanta Hawks",
+                logoSrc:" https://p7.hiclipart.com/preview/641/166/495/atlanta-hawks-nba-miami-heat-golden-state-warriors-portland-trail-blazers-atlanta-hawks-png-transparent-image.jpg"
+            }
+            let pacers={
+                name:"Indiana Pacers",
+                logoSrc:"https://i.pinimg.com/originals/4a/9c/f2/4a9cf2d3f89921935df8a13e7e29d1b0.png"
+            }
+            let pelicans={
+                name:"New Orleans Pelicans",
+                logoSrc:"https://i.pinimg.com/originals/42/8b/a5/428ba53e229ee4f0fb193c0f52811f63.png"
+            }
+            let kings={
+                name:"Sacremento Kings",
+                logoSrc:"https://a2.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fnba%2F500%2Fsac.png"
+            }
+            let blazers={
+                name:"Portland Trailblazers",
+                logoSrc:"https://s.yimg.com/cv/apiv2/default/nba/20181221/500x500/trailblazers_wbgs.png"
+            }
+            let pistons={
+                name:"Detriot Pistons",
+                logoSrc:"https://s.yimg.com/cv/apiv2/default/nba/20181214/500x500/pistons_wbg.png"
+            }
+            let wizards={
+                name:"Washington Wizards",
+                logoSrc:"https://assets.stickpng.com/images/58419c12a6515b1e0ad75a5b.png"
+            }
+            let suns={
+                name:"Pheonix Suns",
+                logoSrc:"https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/phx.png"
+            }
+            let nuggets={
+                name:"Denver Nuggets",
+                logoSrc:" https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/den.png"
+            }
+            return(
+                <div className="App">
+                    <Game venue="the Chase Center" homeTeam={warriors} visitingTeam={timberwolves} />
+                    <Game venue="the Staples Center" homeTeam={lakers} visitingTeam={nets} />
+                </div>
+            )
+        }
+
+        let element = <App />
+        ReactDOM.render(element, document.getElementById("root"));
+    </script>
+</body>
+</html>

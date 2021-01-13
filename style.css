@@ -1,0 +1,35 @@
+html {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    color: darkslategray;
+    height: 100%;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    font-size: large;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+}
+
+.versus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: green;
+}
+
+button {
+    background-color: gold;
+}
