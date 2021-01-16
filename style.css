@@ -11,6 +11,7 @@ body {
     justify-content: center;
     align-items: top;
     font-size: large;
+    padding: 10px;
 }
 
 img {

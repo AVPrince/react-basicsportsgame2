@@ -128,7 +128,7 @@
             let mavericks={
                 name:"Dallas Mavericks",
                 venue:"the American Airlines Center",
-                logoSrc:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCBSetI5kUZ4CXBi_tlsPEBSjMADA7-IKPfQ&usqp=CAU"
+                logoSrc:"https://assets.stickpng.com/images/58419cd6a6515b1e0ad75a68.png"
             }
             let bucks = {
                 name:"Milwaukee Bucks",
@@ -148,17 +148,17 @@
             let cavs = {
                 name: "Cleveland Cavaliers",
                 venue:"the Rocket Mortgage Field House",
-                logoSrc: "https://p7.hiclipart.com/preview/636/267/712/cleveland-cavaliers-the-nba-finals-boston-celtics-miami-heat-nba-basketball.jpg"
+                logoSrc: "https://assets.stickpng.com/thumbs/58419c8da6515b1e0ad75a63.png"
             }
             let bulls={
                 name:"Chicago Bulls",
                 venue:"the United Center",
-                logoSrc:"https://mpng.subpng.com/20190806/zlw/kisspng-chicago-bulls-logo-nba-sports-trrtlz-share-your-adventure-5d48ffb687bff7.327412171565065142556.jpg"
+                logoSrc:"https://assets.stickpng.com/images/58419cf6a6515b1e0ad75a6b.png"
             }
             let magic={
                 name:"Orlando Magic",
                 venue:"the Amway Center",
-                logoSrc:"https://mpng.subpng.com/20181122/ehc/kisspng-orlando-magic-nba-miami-heat-philadelphia-76ers-gorras-orlando-magic-hatstore-es-5bf752168af357.5632237715429350625692.jpg"
+                logoSrc:"https://assets.stickpng.com/images/58419b7da6515b1e0ad75a51.png"
             }
             let rockets={
                 name:"Houston Rockets",
@@ -188,7 +188,7 @@
             let hawks={
                 name:"Atlanta Hawks",
                 venue:"State Farm Arena",
-                logoSrc:" https://p7.hiclipart.com/preview/641/166/495/atlanta-hawks-nba-miami-heat-golden-state-warriors-portland-trail-blazers-atlanta-hawks-png-transparent-image.jpg"
+                logoSrc:"https://assets.stickpng.com/images/58419be4a6515b1e0ad75a58.png"
             }
             let pacers={
                 name:"Indiana Pacers",
@@ -232,15 +232,23 @@
             }
             let teams = [suns, nuggets, wizards, pistons, lakers, clippers, cavs, pacers, blazers, kings, pelicans, timberwolves, thunder, spurs, knicks, celtics, warriors, hawks, heat, magic, bulls, nets, grizzlies, rockets, bucks, nets, jazz, hornets, sixers, mavericks]
 
-            
-
             return(
                 <div className="App">
                     <Game venue={warriors.venue} homeTeam={warriors} visitingTeam={timberwolves} />
                     <Game venue={lakers.venue} homeTeam={lakers} visitingTeam={nets} />
-                    <Game />
-                    <Game />
-                    <Game />
+                    <Game venue={nuggets.venue} homeTeam={nuggets} visitingTeam={suns} />
+                    <Game venue={celtics.venue} homeTeam={celtics} visitingTeam={sixers} />
+                    <Game venue={bucks.venue} homeTeam={bucks} visitingTeam={clippers} />
+                    <Game venue={bulls.venue} homeTeam={bulls} visitingTeam={magic} />
+                    <Game venue={spurs.venue} homeTeam={spurs} visitingTeam={mavericks} />
+                    <Game venue={cavs.venue} homeTeam={cavs} visitingTeam={raptors} />
+                    <Game venue={pistons.venue} homeTeam={pistons} visitingTeam={hornets} />
+                    <Game venue={thunder.venue} homeTeam={thunder} visitingTeam={jazz} />
+                    <Game venue={grizzlies.venue} homeTeam={grizzlies} visitingTeam={rockets} />
+                    <Game venue={hawks.venue} homeTeam={hawks} visitingTeam={pacers} />
+                    <Game venue={blazers.venue} homeTeam={blazers} visitingTeam={pelicans} />
+                    <Game venue={knicks.venue} homeTeam={knicks} visitingTeam={kings} />
+                    <Game venue={heat.venue} homeTeam={heat} visitingTeam={wizards} />
                 </div>
             )
         }
